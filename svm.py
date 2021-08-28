@@ -21,11 +21,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.20, random
 pca = PCA(n_components = 2).fit(X_train)
 pca_2d = pca.transform(X_train)
 
-clf = SVC(kernel='poly')
+clf = SVC( C=1)
 clf.fit(pca_2d, y_train)
 
 test_2d = pca.transform(X_test)
-
 y_pred = clf.predict(test_2d)
 
 # 0.54 - 0
@@ -34,6 +33,7 @@ y_pred = clf.predict(test_2d)
 gamma = 1
 Xr = np.exp(-gamma*(pca_2d ** 2).sum(1))
 print("Accuracy:", metrics.accuracy_score(y_test, y_pred))
+
 cmap   = matplotlib.colors.ListedColormap( [ 'g', 'r' ] )
 z = [i for i in range(800)]
 fig = plt.figure()
