@@ -15,11 +15,3 @@ for i in ['linear', 'poly', 'rbf', 'sigmoid']:
     clf = SVC(kernel = i) # instancia el algoritmo
     clf.fit(X_train, y_train) #se entrena
     print(i,clf.score(X_test, y_test))
-
-"""
-plt.plot(x, scores,'bo-')
-plt.title("Percent Correct: Accuracy of Predictions with "+ str(i*100) +"% of test" )
-plt.xlabel("Ciclo")
-plt.ylabel("Percent Correct")
-plt.show()
-"""

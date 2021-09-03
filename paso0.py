@@ -1,6 +1,7 @@
+## CONVERSION DEL ARCHIVO
 import pandas as pd 
 
-def add_one(x):
+def formatAge(x):
 	return x[2:3]
 
 def getRaza(x):
@@ -11,9 +12,10 @@ def getRaza(x):
 
 df = pd.read_excel('Neospora.xlsx')
 
-df["EDAD"] = df["EDAD"].apply(add_one)
+df["EDAD"] = df["EDAD"].apply(formatAge)
 df["RAZA"] = df["RAZA"].apply(getRaza)
+
 for i in ['NEOSPORA','TORO','INSEMINACION','ABORTO','REPETICION','NO_CARGA','DISTOCIAS','TERNEROS_DEBILES','MUERTE_EMBRIONARIA']:
     df[i] = df[i].apply(lambda x: int (x))
 
-df.to_csv('Neospora2.csv', encoding='utf-8', index=False)
+df.to_csv('Neospora.csv', encoding='utf-8', index=False)
